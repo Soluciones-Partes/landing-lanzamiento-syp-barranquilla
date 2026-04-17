@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_engram_engram__mem_save",
+      "Bash(sed -n '1280,1692p' \"C:/Users/webmaster/Downloads/Documentos/Landing lnazamiento S&P Barranquilla/landing-barranquilla.liquid\")",
+      "Read(//tmp/**)",
+      "Bash(sed -n '1694,$p' 'C:/Users/webmaster/Downloads/Documentos/Landing lnazamiento S&P Barranquilla/landing-barranquilla.liquid')"
+    ]
+  }
+}

@@ -1,0 +1,374 @@
+{{ 'sp-baq-barranquilla.css' | asset_url | stylesheet_tag }}
+
+<div class="sp-baq">
+
+  {%- comment -%} ── HERO (solo imagen con diseño) ── {%- endcomment -%}
+  <section class="sp-baq-hero">
+    <div class="sp-baq-hero__bg">
+      {%- if section.settings.hero_desktop != blank -%}
+        <img class="sp-baq-hero__bg-desktop" src="{{ section.settings.hero_desktop | image_url: width: 1920 }}" alt="Soluciones y Partes llega a Barranquilla" loading="eager" width="1920" height="900">
+      {%- endif -%}
+      {%- if section.settings.hero_mobile != blank -%}
+        <img class="sp-baq-hero__bg-mobile" src="{{ section.settings.hero_mobile | image_url: width: 768 }}" alt="Soluciones y Partes llega a Barranquilla" loading="eager" width="768" height="1000">
+      {%- endif -%}
+    </div>
+
+    <div class="sp-baq-confetti">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </section>
+
+  {%- comment -%} ── MARQUEE ── {%- endcomment -%}
+  <div class="sp-baq-marquee" aria-hidden="true">
+    <div class="sp-baq-marquee__track">
+      {%- for i in (1..2) -%}
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Excavadoras</span>
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Motobombas</span>
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Motores Di&eacute;sel</span>
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Bombas de Agua</span>
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Filtros</span>
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Tren de Rodaje</span>
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Motores Mercury</span>
+        <span class="sp-baq-marquee__item"><span class="sp-baq-marquee__dot"></span> Barranquilla</span>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- comment -%} ── STATS ── {%- endcomment -%}
+  <section class="sp-baq-stats">
+    <div class="sp-baq-stats__grid">
+      <div class="sp-baq-stat sp-baq-reveal">
+        <div class="sp-baq-stat__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="sp-baq-stat__number" data-target="{{ section.settings.stat_1_number }}">0</div>
+        <div class="sp-baq-stat__label">{{ section.settings.stat_1_label }}</div>
+      </div>
+      <div class="sp-baq-stat sp-baq-reveal">
+        <div class="sp-baq-stat__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <div class="sp-baq-stat__number" data-target="{{ section.settings.stat_2_number }}">0</div>
+        <div class="sp-baq-stat__label">{{ section.settings.stat_2_label }}</div>
+      </div>
+      <div class="sp-baq-stat sp-baq-reveal">
+        <div class="sp-baq-stat__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="sp-baq-stat__number" data-target="{{ section.settings.stat_3_number }}">0</div>
+        <div class="sp-baq-stat__label">{{ section.settings.stat_3_label }}</div>
+      </div>
+      <div class="sp-baq-stat sp-baq-reveal">
+        <div class="sp-baq-stat__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="sp-baq-stat__number" data-target="{{ section.settings.stat_4_number }}">0</div>
+        <div class="sp-baq-stat__label">{{ section.settings.stat_4_label }}</div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── CATEGORIAS ── {%- endcomment -%}
+  <section class="sp-baq-categorias" id="sp-baq-categorias">
+    <div class="sp-baq-section-header sp-baq-reveal">
+      <span class="sp-baq-section-header__label">Cat&aacute;logo</span>
+      <h2 class="sp-baq-section-header__title">Nuestros Productos</h2>
+      <p class="sp-baq-section-header__sub">Todo lo que necesit&aacute;s en maquinaria, repuestos y equipos industriales.</p>
+    </div>
+    <div class="sp-baq-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'categoria' -%}
+          <a href="{{ block.settings.url }}" class="sp-baq-card sp-baq-reveal" {{ block.shopify_attributes }}>
+            <div class="sp-baq-card__img">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.title }}" loading="lazy" width="400" height="400">
+              {%- else -%}
+                <div style="width:100%;aspect-ratio:1/1;background:#e0e0e0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.85rem;">{{ block.settings.title }}</div>
+              {%- endif -%}
+            </div>
+            <span class="sp-baq-card__name">{{ block.settings.title }}</span>
+            <span class="sp-baq-card__arrow">Ver colecci&oacute;n <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- comment -%} ── PRODUCTO DESTACADO ── {%- endcomment -%}
+  <section class="sp-baq-producto">
+    <div class="sp-baq-producto__bg-pattern"></div>
+    <div class="sp-baq-producto__wrapper">
+      <div class="sp-baq-producto__visual sp-baq-reveal--left sp-baq-reveal">
+        <div class="sp-baq-producto__deco"></div>
+        <div class="sp-baq-producto__img-wrap">
+          {%- if section.settings.prod_image != blank -%}
+            <img src="{{ section.settings.prod_image | image_url: width: 600 }}" alt="{{ section.settings.prod_title }}" loading="lazy" width="600" height="450">
+          {%- endif -%}
+        </div>
+        <div class="sp-baq-producto__float-badge">
+          <strong>{{ section.settings.prod_badge_line1 }}</strong>
+          {{ section.settings.prod_badge_line2 }}
+        </div>
+      </div>
+      <div class="sp-baq-producto__info sp-baq-reveal--right sp-baq-reveal">
+        <span class="sp-baq-producto__tag">Producto Destacado</span>
+        <h2 class="sp-baq-producto__title">{{ section.settings.prod_title }}</h2>
+        <p class="sp-baq-producto__desc">{{ section.settings.prod_desc }}</p>
+        <ul class="sp-baq-producto__features">
+          {%- assign features = section.settings.prod_features | split: '|' -%}
+          {%- for feat in features -%}
+            {%- assign trimmed = feat | strip -%}
+            {%- if trimmed != blank -%}
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {{ trimmed }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        <a href="{{ section.settings.prod_url }}" class="sp-baq-producto__cta">
+          Conocer m&aacute;s
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── BENEFICIOS ── {%- endcomment -%}
+  <section class="sp-baq-beneficios">
+    <div class="sp-baq-section-header sp-baq-reveal">
+      <span class="sp-baq-section-header__label">Ventajas</span>
+      <h2 class="sp-baq-section-header__title">&iquest;Por qu&eacute; elegirnos?</h2>
+      <p class="sp-baq-section-header__sub">M&aacute;s que un proveedor, somos tu aliado en maquinaria y repuestos industriales</p>
+    </div>
+    <div class="sp-baq-beneficios__grid">
+      <div class="sp-baq-beneficio sp-baq-reveal">
+        <div class="sp-baq-beneficio__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="sp-baq-beneficio__title">{{ section.settings.ben_1_title }}</h3>
+        <p class="sp-baq-beneficio__text">{{ section.settings.ben_1_text }}</p>
+      </div>
+      <div class="sp-baq-beneficio sp-baq-reveal">
+        <div class="sp-baq-beneficio__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3 class="sp-baq-beneficio__title">{{ section.settings.ben_2_title }}</h3>
+        <p class="sp-baq-beneficio__text">{{ section.settings.ben_2_text }}</p>
+      </div>
+      <div class="sp-baq-beneficio sp-baq-reveal">
+        <div class="sp-baq-beneficio__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <h3 class="sp-baq-beneficio__title">{{ section.settings.ben_3_title }}</h3>
+        <p class="sp-baq-beneficio__text">{{ section.settings.ben_3_text }}</p>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── UBICACION + MAPA ── {%- endcomment -%}
+  <section class="sp-baq-ubicacion">
+    <svg class="sp-baq-skyline" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="var(--sp-azul)" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="60" width="35" height="60"/><rect x="25" y="50" width="25" height="10"/><rect x="70" y="40" width="25" height="80"/><rect x="75" y="30" width="15" height="10"/><rect x="110" y="55" width="40" height="65"/><rect x="200" y="30" width="8" height="90"/><rect x="258" y="30" width="8" height="90"/><path d="M200 30 Q233 0 266 30" fill="none" stroke="var(--sp-azul)" stroke-width="8"/><rect x="195" y="25" width="76" height="8"/><rect x="310" y="45" width="30" height="75"/><rect x="355" y="25" width="22" height="95"/><rect x="390" y="50" width="45" height="70"/><rect x="450" y="35" width="20" height="85"/><rect x="560" y="40" width="30" height="80"/><polygon points="560,40 575,15 590,40"/><rect x="620" y="50" width="40" height="70"/><rect x="675" y="35" width="25" height="85"/><rect x="780" y="40" width="20" height="80"/><path d="M890 70 Q930 30 970 70" fill="none" stroke="var(--sp-azul)" stroke-width="6"/><rect x="888" y="70" width="84" height="50"/><rect x="1000" y="45" width="30" height="75"/><rect x="1085" y="35" width="22" height="85"/><rect x="1120" y="50" width="40" height="70"/><rect x="1280" y="50" width="4" height="70"/><ellipse cx="1282" cy="45" rx="18" ry="10"/><rect x="1380" y="30" width="6" height="90"/><rect x="1370" y="28" width="50" height="5"/><rect x="0" y="118" width="1440" height="2"/>
+    </svg>
+
+    <div class="sp-baq-section-header sp-baq-reveal">
+      <span class="sp-baq-section-header__label">Visit&aacute;nos</span>
+      <h2 class="sp-baq-section-header__title">Nuestra Sede en Barranquilla</h2>
+      <p class="sp-baq-section-header__sub">En la Puerta de Oro de Colombia, listos para atenderte</p>
+    </div>
+
+    <div class="sp-baq-ubicacion__wrapper">
+      <div class="sp-baq-ubicacion__info sp-baq-reveal--left sp-baq-reveal">
+        <h3 class="sp-baq-ubicacion__info-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ubicaci&oacute;n
+        </h3>
+        <div class="sp-baq-ubicacion__detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2541B" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>{{ section.settings.direccion | newline_to_br }}</span>
+        </div>
+        <div class="sp-baq-ubicacion__detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2541B" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>{{ section.settings.telefono }}</span>
+        </div>
+        <div class="sp-baq-ubicacion__detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2541B" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>{{ section.settings.email }}</span>
+        </div>
+        <div class="sp-baq-ubicacion__detail">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2541B" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>{{ section.settings.horarios | newline_to_br }}</span>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query={{ section.settings.direccion | url_encode }}" target="_blank" rel="noopener noreferrer" class="sp-baq-ubicacion__btn-direccion">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          C&oacute;mo llegar
+        </a>
+      </div>
+      <div class="sp-baq-ubicacion__mapa sp-baq-reveal--right sp-baq-reveal">
+        <iframe src="{{ section.settings.mapa_embed }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicaci&oacute;n Soluciones y Partes Barranquilla"></iframe>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── CONTACTO ── {%- endcomment -%}
+  <section class="sp-baq-contacto">
+    <div class="sp-baq-contacto__bg">
+      <div class="sp-baq-contacto__bg-shape"></div>
+      <div class="sp-baq-contacto__bg-shape"></div>
+      <div class="sp-baq-contacto__bg-shape"></div>
+    </div>
+    <div class="sp-baq-contacto__wrapper sp-baq-reveal--scale sp-baq-reveal">
+      <span class="sp-baq-section-header__label" style="color: var(--sp-amarillo);">Contacto</span>
+      <h2 class="sp-baq-contacto__title">&iexcl;Hablemos!</h2>
+      <p class="sp-baq-contacto__sub">&iquest;Ten&eacute;s preguntas o quer&eacute;s cotizar? Nuestro equipo est&aacute; listo para ayudarte.</p>
+      <div class="sp-baq-contacto__buttons">
+        <a href="https://wa.me/{{ section.settings.whatsapp }}?text={{ section.settings.whatsapp_msg | url_encode }}" target="_blank" rel="noopener noreferrer" class="sp-baq-btn-whatsapp">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a href="mailto:{{ section.settings.email }}?subject=Consulta%20desde%20la%20web%20-%20Sede%20Barranquilla" class="sp-baq-btn-email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Enviar Correo
+        </a>
+      </div>
+      <div class="sp-baq-contacto__datos">
+        <div class="sp-baq-contacto__dato">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          {{ section.settings.telefono }}
+        </div>
+        <div class="sp-baq-contacto__dato">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          {{ section.settings.email }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── FLOATING WHATSAPP ── {%- endcomment -%}
+  <a href="https://wa.me/{{ section.settings.whatsapp }}?text={{ section.settings.whatsapp_msg | url_encode }}" target="_blank" rel="noopener noreferrer" class="sp-baq-float-wa" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  document.querySelectorAll('.sp-baq a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  var els = document.querySelectorAll('.sp-baq-reveal');
+  if ('IntersectionObserver' in window && els.length) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('sp-baq-visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+  } else { els.forEach(function(el) { el.classList.add('sp-baq-visible'); }); }
+  var nums = document.querySelectorAll('.sp-baq-stat__number[data-target]');
+  if ('IntersectionObserver' in window && nums.length) {
+    var numObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target, target = parseInt(el.getAttribute('data-target'), 10), startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var p = Math.min((ts - startTime) / 2000, 1), eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString('es-CO') + (target >= 100 ? '+' : '');
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step); numObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function(n) { numObs.observe(n); });
+  }
+  document.querySelectorAll('.sp-baq-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      var rx = (y - r.height/2) / (r.height/2) * -4, ry = (x - r.width/2) / (r.width/2) * 4;
+      card.style.transform = 'perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-10px) scale(1.02)';
+    });
+    card.addEventListener('mouseleave', function() { card.style.transform = ''; });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Landing Barranquilla",
+  "tag": "section",
+  "class": "sp-baq-section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "hero_desktop", "label": "Imagen hero desktop (1920x900)" },
+    { "type": "image_picker", "id": "hero_mobile", "label": "Imagen hero mobile (768x1000)" },
+
+    { "type": "header", "content": "Estadisticas" },
+    { "type": "number", "id": "stat_1_number", "label": "Stat 1 numero", "default": 15 },
+    { "type": "text", "id": "stat_1_label", "label": "Stat 1 etiqueta", "default": "Años de experiencia" },
+    { "type": "number", "id": "stat_2_number", "label": "Stat 2 numero", "default": 5000 },
+    { "type": "text", "id": "stat_2_label", "label": "Stat 2 etiqueta", "default": "Productos disponibles" },
+    { "type": "number", "id": "stat_3_number", "label": "Stat 3 numero", "default": 3000 },
+    { "type": "text", "id": "stat_3_label", "label": "Stat 3 etiqueta", "default": "Clientes satisfechos" },
+    { "type": "number", "id": "stat_4_number", "label": "Stat 4 numero", "default": 3 },
+    { "type": "text", "id": "stat_4_label", "label": "Stat 4 etiqueta", "default": "Sedes en Colombia" },
+
+    { "type": "header", "content": "Producto Destacado" },
+    { "type": "image_picker", "id": "prod_image", "label": "Imagen producto (600x450)" },
+    { "type": "text", "id": "prod_title", "label": "Nombre", "default": "Mini Excavadoras de Alto Rendimiento" },
+    { "type": "textarea", "id": "prod_desc", "label": "Descripcion", "default": "Equipos compactos ideales para construccion, agricultura y mineria en espacios reducidos." },
+    { "type": "text", "id": "prod_features", "label": "Caracteristicas (separadas por |)", "default": "Motor diesel de alta eficiencia|Garantia y soporte tecnico directo|Repuestos disponibles en todas las sedes|Envio a toda la Costa Caribe" },
+    { "type": "url", "id": "prod_url", "label": "Link del producto" },
+    { "type": "text", "id": "prod_badge_line1", "label": "Badge linea 1", "default": "TOP" },
+    { "type": "text", "id": "prod_badge_line2", "label": "Badge linea 2", "default": "Ventas" },
+
+    { "type": "header", "content": "Beneficios" },
+    { "type": "text", "id": "ben_1_title", "label": "Beneficio 1 titulo", "default": "Garantia de Calidad" },
+    { "type": "textarea", "id": "ben_1_text", "label": "Beneficio 1 texto", "default": "Todos nuestros productos cuentan con garantia directa del fabricante y soporte tecnico especializado." },
+    { "type": "text", "id": "ben_2_title", "label": "Beneficio 2 titulo", "default": "Envio a Toda la Costa" },
+    { "type": "textarea", "id": "ben_2_text", "label": "Beneficio 2 texto", "default": "Desde nuestra sede en Barranquilla cubrimos toda la region Caribe con entregas rapidas y seguras." },
+    { "type": "text", "id": "ben_3_title", "label": "Beneficio 3 titulo", "default": "Asesoria Especializada" },
+    { "type": "textarea", "id": "ben_3_text", "label": "Beneficio 3 texto", "default": "Nuestro equipo tecnico te ayuda a encontrar exactamente lo que necesitas para tu proyecto." },
+
+    { "type": "header", "content": "Ubicacion y Contacto" },
+    { "type": "textarea", "id": "direccion", "label": "Direccion", "default": "Parque Internacional del Caribe, Calle 110, Av. Circunvalar #6-361 Local 1, Barranquilla, Atlantico" },
+    { "type": "text", "id": "telefono", "label": "Telefono", "default": "318 037 1974" },
+    { "type": "text", "id": "email", "label": "Email", "default": "admon.barranquilla@solucionesypartes.com" },
+    { "type": "textarea", "id": "horarios", "label": "Horarios", "default": "Lunes a Viernes: 8:00 AM - 5:00 PM\nSabado: 8:00 AM - 12:00 PM" },
+    { "type": "text", "id": "mapa_embed", "label": "URL embed Google Maps (solo el src del iframe)", "default": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4646.547386871882!2d-74.83651302429531!3d10.949977855967179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef5d3ed6cd5b4af%3A0xaec25ae988c5b994!2sSoluciones%20%26%20Partes%20%7C%20Barranquilla!5e1!3m2!1ses-419!2sco!4v1776185562722!5m2!1ses-419!2sco" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp (con codigo pais)", "default": "573180371974" },
+    { "type": "text", "id": "whatsapp_msg", "label": "Mensaje predeterminado WhatsApp", "default": "Hola, vi la pagina de Barranquilla y me gustaria mas informacion." }
+  ],
+  "blocks": [
+    {
+      "type": "categoria",
+      "name": "Categoria",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Nombre", "default": "Categoria" },
+        { "type": "url", "id": "url", "label": "Link de la coleccion" },
+        { "type": "image_picker", "id": "image", "label": "Imagen (400x400)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Barranquilla",
+      "blocks": [
+        { "type": "categoria", "settings": { "title": "Tren de Rodaje", "url": "/collections/tren-de-rodaje" } },
+        { "type": "categoria", "settings": { "title": "Miscelanea", "url": "/collections/miscelanea" } },
+        { "type": "categoria", "settings": { "title": "Motores Diesel", "url": "/collections/motores-diesel" } },
+        { "type": "categoria", "settings": { "title": "Motores Fuera de Borda Mercury", "url": "/collections/motores-fuera-de-borda" } },
+        { "type": "categoria", "settings": { "title": "Motobombas", "url": "/collections/motobombas" } },
+        { "type": "categoria", "settings": { "title": "Excavadoras", "url": "/collections/excavadoras" } },
+        { "type": "categoria", "settings": { "title": "Bombas de Agua", "url": "/collections/bombas-agua" } },
+        { "type": "categoria", "settings": { "title": "Filtros", "url": "/collections/filtros" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
